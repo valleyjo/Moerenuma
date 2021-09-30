@@ -7,7 +7,7 @@
   {
     public static void Main(string[] args)
     {
-      Summary summary = BenchmarkRunner.Run<ToLowerBenchmark>();
+      Summary summary = BenchmarkRunner.Run<ArrayAllocationBenchmark>();
     }
   }
 }
