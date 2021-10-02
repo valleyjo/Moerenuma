@@ -1,5 +1,6 @@
 ﻿namespace Moerenuma.Test.Channels
 {
+  using System;
   using System.Collections.Generic;
   using System.Threading;
   using System.Threading.Tasks;
@@ -19,7 +20,7 @@
       writeBuffer.TryWrite('c').Should().BeTrue();
       Task producerTask = producer.RunAsync();
       blockingLoggingProducer.UnblockOne();
-      logLines.Should().Contain(s => s.Contains("[Information]produced value 'c'"));
+      logLines.Should().Contain(s => s.Contains("[Information]produced value 'c'", StringComparison.Ordinal));
     }
 
     [TestMethod]
@@ -29,7 +30,7 @@
       Task producerTask = producer.RunAsync();
       writeBuffer.TryWrite('f').Should().BeTrue();
       blockingLoggingProducer.UnblockOne();
-      logLines.Should().Contain(s => s.Contains("[Information]produced value 'f'"));
+      logLines.Should().Contain(s => s.Contains("[Information]produced value 'f'", StringComparison.Ordinal));
     }
 
     [TestMethod]
@@ -43,11 +44,11 @@
 
       // allow 'f' to be written
       blockingProducer.UnblockOne();
-      logLines.Should().Contain(s => s.Contains("[Information]produced value 'f'"));
+      logLines.Should().Contain(s => s.Contains("[Information]produced value 'f'", StringComparison.Ordinal));
 
       // allow 'r' to be written
       blockingProducer.UnblockOne();
-      logLines.Should().Contain(s => s.Contains("[Information]produced value 'r'"));
+      logLines.Should().Contain(s => s.Contains("[Information]produced value 'r'", StringComparison.Ordinal));
     }
 
     [TestMethod]

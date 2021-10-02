@@ -27,6 +27,7 @@
     public string ToLower() => this.data.ToLower();
 
     [Benchmark]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "This is the method we want to benchmark")]
     public string ToLowerInvariant() => this.data.ToLowerInvariant();
   }
 }
