@@ -1,4 +1,4 @@
-﻿namespace Moerenuma
+﻿namespace Moerenuma.Common
 {
   using System;
   using System.Collections.Concurrent;
