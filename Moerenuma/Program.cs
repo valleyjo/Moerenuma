@@ -1,9 +1,8 @@
 ﻿namespace Moerenuma
 {
-  using System;
   using System.Threading;
-  using System.Threading.Tasks;
   using Microsoft.Extensions.Logging;
+  using Moerenuma.Robot;
 
   public class Program
   {
@@ -22,8 +21,8 @@
       ILogger logger = loggerFactory.CreateLogger(nameof(Program));
       var cts = new CancellationTokenSource();
 
-      logger.LogInformation("Starting program");
-      Console.ReadLine();
+      Runner.RunLoop(logger);
+
       logger.LogInformation("Ending program");
     }
   }
